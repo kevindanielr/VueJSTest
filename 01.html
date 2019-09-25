@@ -1,0 +1,41 @@
+<html>
+    <head>
+        <title>Hola mundo con JS</title>
+    </head>
+    <body>
+        <div id="app">
+            <h1>{{titulo}}</h1>
+
+            <ul>
+                <li v-for="fruta of frutas">{{fruta}}</li>
+            </ul>
+
+            <ul>
+                <li v-for="fruta of frutas2">
+                    {{fruta.nombre}} cantidad: {{fruta.cantidad}}
+                    <span v-if="fruta.cantidad == 0"> - Sin Stock</span>
+                </li>
+            </ul>
+
+            <ul>
+                <li v-for="fruta of frutas2">
+                    {{fruta.nombre}} <input type="number" v-model.number="fruta.cantidad">
+                    <button @click="fruta.cantidad++">+</button>
+                    <span v-if="fruta.cantidad === 0"> - Sin Stock</span>
+                </li>
+            </ul>
+
+            <h4>TOTAL: {{sumarFruta}}</h4>
+
+            <input type="text" v-model="nuevaFruta.nombre" @keyup.enter="$event.target.nextElementSibling.focus()">
+            <input type="text" v-model="nuevaFruta.cantidad" @keyup.enter="agregarFruta">
+            <!-- <button v-on:click='agregarFruta'>Agregar</button> -->
+            <button @click="agregarFruta">Agregar</button>
+
+        </div>
+    </body>
+
+    <!-- development version, includes helpful console warnings -->
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <script src="01.js"></script>
+</html>
